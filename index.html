@@ -455,7 +455,7 @@
                 <div class="embla position-relative" data-skip-snaps="true" data-align="center" data-contain-scroll="trimSnaps" data-loop="true" data-auto-play-interval="5" data-draggable="true">
                     <div class="embla__viewport">
                         <div class="embla__container">
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/1.png')">
                                 <div class="slide-content">
                                     <div class="item-img">
                                         <div class="item-wrapper">
@@ -464,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/2.png')">
                                 <div class="slide-content">
                                     <div class="item-img">
                                         <div class="item-wrapper">
@@ -473,7 +473,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/3.png')">
                                 <div class="slide-content">
                                     <div class="item-img">
                                         <div class="item-wrapper">
@@ -482,7 +482,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/4.png')">
                                 <div class="slide-content">
                                     <div class="item-img">
                                         <div class="item-wrapper">
@@ -491,7 +491,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/5.png')">
                                 <div class="slide-content">
                                     <div class="item-img">
                                         <div class="item-wrapper">
@@ -500,7 +500,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/6.png')">
                             <div class="slide-content">
                                 <div class="item-img">
                                     <div class="item-wrapper">
@@ -509,7 +509,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/7.png')">
                             <div class="slide-content">
                                 <div class="item-img">
                                     <div class="item-wrapper">
@@ -518,7 +518,7 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignPopup(this)">
+                            <div class="embla__slide slider-image item" style="margin-left: 1rem; margin-right: 1rem;" onclick="openDesignModal('assets/images/IG/8.png')">
                             <div class="slide-content">
                                 <div class="item-img">
                                     <div class="item-wrapper">
@@ -759,11 +759,11 @@
         </div>
     </div>
 
-    <!-- Design Popup -->
-    <div id="designPopup" class="design-popup" onclick="closeDesignPopup()">
-        <div class="design-popup-content" onclick="event.stopPropagation()">
-            <span class="design-close" onclick="closeDesignPopup()">&times;</span>
-            <img id="designPopupImg" src="" alt="Design Preview">
+    <!-- Design Modal -->
+    <div id="designModal" class="design-modal" onclick="closeDesignModal()">
+        <div class="design-modal-content">
+            <span class="design-close" onclick="closeDesignModal()">&times;</span>
+            <img id="designModalImg" src="" alt="Design Preview">
         </div>
     </div>
 </section>
@@ -926,18 +926,15 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Design Popup Functions
-    function openDesignPopup(slideElement) {
-        event.stopPropagation();
-
-        const designImgSrc = slideElement.querySelector('.item-img img').src;
-        document.getElementById('designPopup').style.display = 'block';
-        document.getElementById('designPopupImg').src = designImgSrc;
+    // Design Modal Functions
+    function openDesignModal(src) {
+        document.getElementById('designModal').style.display = 'block';
+        document.getElementById('designModalImg').src = src;
         document.body.style.overflow = 'hidden';
     }
 
-    function closeDesignPopup() {
-        document.getElementById('designPopup').style.display = 'none';
+    function closeDesignModal() {
+        document.getElementById('designModal').style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
@@ -1301,9 +1298,9 @@
             closeProjectPopup();
         }
 
-        const designPopup = document.getElementById('designPopup');
-        if (event.target == designPopup) {
-            closeDesignPopup();
+        const designModal = document.getElementById('designModal');
+        if (event.target == designModal) {
+            closeDesignModal();
         }
     }
 
@@ -1312,7 +1309,7 @@
         if (event.key === 'Escape') {
             closeCertModal();
             closeProjectPopup();
-            closeDesignPopup();
+            closeDesignModal();
         }
     });
     </script>
